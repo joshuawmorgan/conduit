@@ -1,0 +1,17 @@
+// The smallest useful workflow. Run:  conduit run examples/hello.flow
+workflow "hello" {
+  description: "Greet the user"
+  param name: string = "world"
+
+  task greet {
+    run: "echo Hello, ${params.name}!"
+  }
+
+  task farewell {
+    depends_on: [greet]
+    uses: "builtin/print"
+    with: {
+      message: "Goodbye, ${params.name}."
+    }
+  }
+}

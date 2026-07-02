@@ -1,0 +1,23 @@
+# Binaries
+/conduit
+/conduit.exe
+/dist/
+*.exe
+*.test
+
+# Plugin build output
+/.conduit/plugins/
+# Runtime state
+/.conduit/runs/
+.conduit/
+
+# Go
+/vendor/
+coverage.out
+*.prof
+
+# Editor
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store

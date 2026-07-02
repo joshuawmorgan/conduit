@@ -1,0 +1,40 @@
+// A small CI pipeline: build -> test -> (lint, vet) -> package
+workflow "ci" {
+  description: "Build, test and package the project"
+
+  param branch: string = "main"
+  param skip_lint: bool = false
+
+  env: {
+    GREETING: "conduit"
+    CI: "true"
+  }
+
+  task build {
+    run: "echo building on ${env.GREETING}"
+    timeout: "2m"
+  }
+
+  task test {
+    depends_on: [build]
+    run: "echo running tests"
+    retry: 1
+  }
+
+  task lint {
+    depends_on: [build]
+    when: "!params.skip_lint"
+    run: "echo linting"
+  }
+
+  task vet {
+    depends_on: [build]
+    run: "echo vetting"
+  }
+
+  task package {
+    depends_on: [test, lint, vet]
+    when: "params.branch == \"main\""
+    run: "echo packaging release for ${params.branch}"
+  }
+}

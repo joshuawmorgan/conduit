@@ -1,0 +1,206 @@
+You are a Principal Software Architect, Distinguished Engineer, Product Architect, Security Architect, Developer Experience Architect, and Technical Program Manager.
+
+Design a next-generation Go-based CLI and automation platform with the following requirements:
+
+GOALS
+- Enterprise-grade CLI platform
+- Extensible command framework
+- Custom DSL
+- Workflow orchestration
+- DAG execution engine
+- Plugin architecture
+- Shell integration
+- IntelliSense support
+- IDE integrations
+- AI-agent consumable APIs
+- Cross-platform support
+
+TECHNOLOGY DECISIONS
+
+Language:
+- Go 1.24+
+
+CLI Framework:
+- Cobra
+
+Configuration:
+- Koanf
+
+DSL Parser:
+- Participle V2
+
+Expression Engine:
+- CEL-Go
+
+Plugin System:
+- Hashicorp go-plugin
+
+Interactive TUI:
+- BubbleTea
+
+Language Server:
+- LSP implementation
+
+Syntax Highlighting:
+- Tree-Sitter grammar
+
+ARCHITECTURE REQUIREMENTS
+
+Generate:
+
+1. Executive Summary
+
+2. Product Vision
+
+3. Product Requirements Document (PRD)
+
+4. Functional Requirements
+
+5. Non-Functional Requirements
+
+6. Security Requirements
+
+7. Platform Architecture
+
+8. Component Architecture
+
+9. Domain Model
+
+10. DSL Grammar Specification
+
+11. Lexer Design
+
+12. Parser Design
+
+13. AST Design
+
+14. Semantic Analysis Design
+
+15. Expression Engine Integration
+
+16. Workflow DAG Design
+
+17. Execution Runtime Design
+
+18. State Management Design
+
+19. Plugin Architecture
+
+20. Extension SDK
+
+21. Command Metadata Model
+
+22. Documentation Generation Framework
+
+23. Completion Engine Design
+
+24. Bash Completion Architecture
+
+25. ZSH Completion Architecture
+
+26. Fish Completion Architecture
+
+27. PowerShell Completion Architecture
+
+28. IntelliSense Architecture
+
+29. LSP Architecture
+
+30. VSCode Extension Architecture
+
+31. Tree-Sitter Grammar Architecture
+
+32. Configuration Architecture
+
+33. Secrets Management Design
+
+34. Authentication Architecture
+
+35. Authorization Architecture
+
+36. Observability Architecture
+
+37. Logging Architecture
+
+38. Telemetry Architecture
+
+39. Event Model
+
+40. Internal Message Bus
+
+41. Error Handling Strategy
+
+42. Recovery Strategy
+
+43. Testing Strategy
+
+44. Unit Test Strategy
+
+45. Integration Test Strategy
+
+46. Plugin Test Strategy
+
+47. DSL Test Strategy
+
+48. Performance Strategy
+
+49. Scalability Strategy
+
+50. Reference Repository Structure
+
+51. Module Layout
+
+52. Package Layout
+
+53. Build Pipeline
+
+54. Release Pipeline
+
+55. CI/CD Pipeline
+
+56. Developer Experience Design
+
+57. API Standards
+
+58. Versioning Strategy
+
+59. Backward Compatibility Strategy
+
+60. Migration Strategy
+
+61. Public SDK Design
+
+62. Sample Workflows
+
+63. Sample DSL Files
+
+64. Sample Plugin Implementations
+
+65. Data Models
+
+66. Sequence Diagrams
+
+67. Component Diagrams
+
+68. Deployment Diagrams
+
+69. Threat Model
+
+70. Future Roadmap
+
+output all documents to the docs folder
+
+OUTPUT FORMAT
+
+Produce:
+- Complete architecture documentation
+- Complete requirements documentation
+- Implementation roadmap
+- Milestone plan
+- Risk register
+- Technical debt register
+- Decision records (ADR)
+- Detailed repository structure
+- 12-month engineering roadmap
+
+Provide enough detail that AI can immediately begin implementation without requiring additional architectural decisions.

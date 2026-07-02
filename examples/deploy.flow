@@ -1,0 +1,29 @@
+// A workflow using a plugin action. Build the greet plugin first:
+//   go build -o .conduit/plugins/conduit-plugin-greet ./plugins/greet
+// then:  conduit run examples/deploy.flow --param env=staging
+workflow "deploy" {
+  description: "Provision then deploy using a plugin action"
+
+  param env: string = "staging"
+  param version: string = "1.0.0"
+
+  task provision {
+    run: "echo provisioning ${params.env}"
+  }
+
+  task greet_ops {
+    depends_on: [provision]
+    uses: "greet/shout"
+    with: {
+      name: "ops team"
+    }
+  }
+
+  task deploy {
+    depends_on: [greet_ops]
+    when: "params.env != \"prod\" || params.version != \"\""
+    run: "echo deploying ${params.version} to ${params.env}"
+    retry: 2
+    timeout: "5m"
+  }
+}

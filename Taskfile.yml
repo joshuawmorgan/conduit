@@ -1,0 +1,75 @@
+# Taskfile for Conduit. Install: https://taskfile.dev  —  run: `task --list`
+version: "3"
+
+vars:
+  BIN: conduit
+  PKG: ./cmd/conduit
+  PLUGIN_DIR: .conduit/plugins
+  LDFLAGS: >-
+    -s -w
+    -X github.com/conduit-io/conduit/internal/buildinfo.Version={{.VERSION | default "v0.1.0-dev"}}
+    -X github.com/conduit-io/conduit/internal/buildinfo.Commit={{.COMMIT | default "dev"}}
+
+tasks:
+  default:
+    cmds: [task --list]
+
+  build:
+    desc: Build the conduit binary
+    cmds:
+      - go build -ldflags "{{.LDFLAGS}}" -o {{.BIN}}{{exeExt}} {{.PKG}}
+
+  plugins:
+    desc: Build first-party plugins into the plugin dir
+    cmds:
+      - go build -o {{.PLUGIN_DIR}}/conduit-plugin-greet{{exeExt}} ./plugins/greet
+
+  test:
+    desc: Run all unit tests
+    cmds:
+      - go test ./...
+
+  cover:
+    desc: Run tests with coverage
+    cmds:
+      - go test -coverprofile=coverage.out ./...
+      - go tool cover -func=coverage.out | tail -1
+
+  vet:
+    desc: Run go vet
+    cmds:
+      - go vet ./...
+
+  fmt:
+    desc: Format Go sources
+    cmds:
+      - gofmt -w .
+
+  lint:
+    desc: Run golangci-lint (if installed)
+    cmds:
+      - golangci-lint run ./...
+
+  docs:
+    desc: Generate CLI reference docs
+    deps: [build]
+    cmds:
+      - ./{{.BIN}}{{exeExt}} docs --out docs/cli
+
+  demo:
+    desc: Build everything and run the example workflows
+    deps: [build, plugins]
+    cmds:
+      - ./{{.BIN}}{{exeExt}} run examples/ci.flow
+      - ./{{.BIN}}{{exeExt}} run examples/deploy.flow --param env=staging
+
+  ci:
+    desc: What CI runs
+    cmds:
+      - task: vet
+      - task: test
+      - task: build
+
+  clean:
+    cmds:
+      - rm -rf {{.BIN}}{{exeExt}} dist coverage.out .conduit/runs
