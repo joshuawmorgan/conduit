@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/alecthomas/participle/v2 v2.1.1
-	github.com/google/cel-go v0.28.1
+	github.com/google/cel-go v0.29.0
 	github.com/hashicorp/go-hclog v1.6.3
 	github.com/hashicorp/go-plugin v1.8.0
 	github.com/knadh/koanf/parsers/yaml v1.1.0
